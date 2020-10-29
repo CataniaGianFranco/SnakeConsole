@@ -30,7 +30,7 @@ namespace SnakeConsole
             {
                 KeyPressed();  
                 Move();
-                Thread.Sleep(600);
+                Thread.Sleep(350);
             }while(!GameOver);
         }
 
@@ -70,12 +70,7 @@ namespace SnakeConsole
         private void Move()
         {
             for (int i = 0; i < position.Count; i++)
-            {
-                Console.Clear();
-                Console.SetCursorPosition(position[i].X, position[i].Y);
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.Write("#");                
-
+            {                             
                 if (direction == Direction.Up)
                     position[i] = new Position(position[i].X, position[i].Y -1);
                 else if (direction == Direction.Down)
@@ -83,7 +78,12 @@ namespace SnakeConsole
                 else if (direction == Direction.Left)
                     position[i] = new Position(position[i].X - 1, position[i].Y);
                 else if (direction == Direction.Right)
-                    position[i] = new Position(position[i].X + 1, position[i].Y);                
+                    position[i] = new Position(position[i].X + 1, position[i].Y);
+                    
+                Console.Clear();
+                Console.SetCursorPosition(position[i].X, position[i].Y);
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("#");                   
             }            
         }
     }
