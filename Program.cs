@@ -8,11 +8,12 @@ namespace SnakeConsole
         {
             // ■ <-- Wall
             // ☻ <-- Head
-            // • <-- Tail
+            // ÷ <-- Tail
             // @ <-- Apple
             Console.Title = "Snake";
-            Stage stage = new Stage();
-            stage.ShowStage();
+            Snake snake = new Snake();
+            snake.Update();
+
             Console.ReadKey();
         }
     }
