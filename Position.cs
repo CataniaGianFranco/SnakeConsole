@@ -6,6 +6,13 @@ namespace SnakeConsole
     {    
         private int x, y;
 
+        public Position(){}
+        public Position(int x, int y)
+        { 
+            this.x = x;
+            this.y = y;
+        }
+
         public int X 
         {
             get { return this.x;}

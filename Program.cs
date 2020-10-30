@@ -6,8 +6,10 @@ namespace SnakeConsole
     {
         static void Main(string[] args)
         {
-            Snake snake = new Snake();
-            snake.UpdateSnake();
+            Console.Title = "Snake game";
+            Console.CursorVisible = false;
+            Game game = new Game();            
+            game.Update();
             Console.ReadKey();
         }
     }
