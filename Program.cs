@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace SnakeConsole
 {
@@ -6,14 +6,8 @@ namespace SnakeConsole
     {
         static void Main(string[] args)
         {
-            // ■ <-- Wall
-            // ☻ <-- Head
-            // ÷ <-- Tail
-            // @ <-- Apple
-            Console.Title = "Snake";
             Snake snake = new Snake();
-            snake.Update();
-
+            snake.UpdateSnake();
             Console.ReadKey();
         }
     }
