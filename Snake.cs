@@ -8,34 +8,21 @@ namespace SnakeConsole
     {
         private bool alive = true;
         private List<Position> partsOfTheSnake = new List<Position>();
-        private Position headPosition;
-        private Position bodyPosition;
-        private Position tailPosition;
-        private Direction direction = Direction.Down;
-        private ConsoleKeyInfo keyPressed;        
-        public void UpdateSnake()
-        {
-            CreateSnake(5,2);
-            do
-            {
-                InputKeyBoard();
-                DrawSnake();            
-                Thread.Sleep(250);
-            }while (alive);           
-        }
+        private Direction direction = Direction.Right;
+        private ConsoleKeyInfo keyPressed;
+        private Position position;
 
-        private void CreateSnake(int x, int y)
+        public Position Position{get => this.position;}
+        public Snake(int x, int y)
         {
-            headPosition = new Position(x,y);
-            bodyPosition = new Position(4,2);
-            tailPosition = new Position(3,2);
-            partsOfTheSnake.Add(headPosition);
-            partsOfTheSnake.Add(new Position());
-            partsOfTheSnake.Add(new Position());
-            partsOfTheSnake.Add(new Position());
-            partsOfTheSnake.Add(new Position());
-            partsOfTheSnake.Add(new Position());
-            partsOfTheSnake.Add(new Position());
+            position = new Position(x,y);
+            partsOfTheSnake.Add(position);
+        }        
+        public void UpdateSnake()
+        {                
+                InputKeyBoard();
+                DrawSnake();    
+                Thread.Sleep(500);           
         }
         
         private void InputKeyBoard()
@@ -82,27 +69,28 @@ namespace SnakeConsole
         }
 
         private void DrawSnake()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Position positionTemporary1 = null;
-            for (int i = 0; i < partsOfTheSnake.Count; i++)
+        {  
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Position positionAuxiliary = null;
+
+            for (int index = 0; index < partsOfTheSnake.Count; index++)
             {
-                if ( i == 0)
+                Console.SetCursorPosition(partsOfTheSnake[index].X, partsOfTheSnake[index].Y);
+                Console.Write(" ");
+                if (index == 0)
                 {
-                    positionTemporary1 = new Position(partsOfTheSnake[0].X, partsOfTheSnake[0].Y);
+                    positionAuxiliary = new Position(partsOfTheSnake[0].X, partsOfTheSnake[0].Y);
                     SnakeDirection();
                 }
                 else
                 {
-                    Position positionTemporary2 = new Position(positionTemporary1.X, positionTemporary1.Y);
-                    positionTemporary1 = new Position(partsOfTheSnake[i].X, partsOfTheSnake[i].Y);
-                    partsOfTheSnake[i] = new Position(positionTemporary2.X, positionTemporary2.Y);
+                    Position positionAuxiliary2 = new Position(partsOfTheSnake[index].X, partsOfTheSnake[index].Y);
+                    partsOfTheSnake[index] = new Position(positionAuxiliary.X, positionAuxiliary.Y);
+                    positionAuxiliary = new Position(positionAuxiliary2.X, positionAuxiliary2.Y);
                 }
-                
-                Console.SetCursorPosition(partsOfTheSnake[i].X, partsOfTheSnake[i].Y);                
-                Console.Write("♥");
-            }                               
+                Console.SetCursorPosition(partsOfTheSnake[index].X, partsOfTheSnake[index].Y);
+                Console.Write("♥");                
+            }              
         }
     }
 }
