@@ -13,6 +13,8 @@ namespace SnakeConsole
         private Position position;
 
         public Position Position{get => this.position;}
+        public Direction Direction{ get => this.direction;}
+        public List<Position> PartsOfTheSnake{get => this.partsOfTheSnake; set => this.partsOfTheSnake = value;}
         public Snake(int x, int y)
         {
             position = new Position(x,y);
@@ -69,7 +71,7 @@ namespace SnakeConsole
         }
 
         private void DrawSnake()
-        {  
+        {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Position positionAuxiliary = null;
 
@@ -91,6 +93,12 @@ namespace SnakeConsole
                 Console.SetCursorPosition(partsOfTheSnake[index].X, partsOfTheSnake[index].Y);
                 Console.Write("♥");                
             }              
+        }
+
+        public void AddBody(int x, int y)
+        {
+            position = new Position(x,y);
+            partsOfTheSnake.Add(position);
         }
     }
 }

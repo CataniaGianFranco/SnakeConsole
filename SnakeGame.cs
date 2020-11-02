@@ -26,26 +26,40 @@ namespace SnakeConsole
             {
                 snake.UpdateSnake();
 
-                if (snake.Position.X == food.Position.X && snake.Position.Y == food.Position.Y )
-                {
-                    food.GenerateFood(width,height);
-                    score += 1;
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.SetCursorPosition(0,0);
-                    Console.Write("  Name: Chicho - Food: {0}  ", score);
-                }
-
-                if (snake.Position.X == 0 || snake.Position.X == width || snake.Position.Y == 1 || snake.Position.Y == height)
-                {
-                    game = false;
-                }
-                    
+                DetectCollision();        
             }
            Console.Clear();
            Console.ForegroundColor = ConsoleColor.White;
            Console.WriteLine("GameOver");
            Console.Write("Name: Chicho\nFood: {0}", score);
             
+        }
+        private void DetectCollision()
+        {
+            Position headPosition = snake.PartsOfTheSnake[0];
+            if (headPosition.X == food.Position.X && headPosition.Y == food.Position.Y )
+            {
+                if (snake.PartsOfTheSnake.Count == 1)
+                {
+                    if (snake.Direction == Direction.Up)
+                        snake.AddBody(headPosition.X, headPosition.Y + 1);
+                    else if (snake.Direction == Direction.Down)
+                        snake.AddBody(headPosition.X, headPosition.Y - 1);
+                    else if (snake.Direction == Direction.Left)
+                        snake.AddBody(headPosition.X + 1, headPosition.Y);
+                    else if (snake.Direction == Direction.Right)
+                        snake.AddBody(headPosition.X - 1, headPosition.Y);
+                }
+                food.GenerateFood(width,height);
+                score += 1;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(0,0);
+                Console.Write("  Name: Chicho - Food: {0}  ", score);
+            }
+            if (headPosition.X == 0 || headPosition.X == width || headPosition.Y == 1 || headPosition.Y == height)
+                {
+                    game = false;
+                }
         }
     }
 }
