@@ -22,7 +22,7 @@ namespace SnakeConsole
         {                
                 InputKeyBoard();
                 DrawSnake();    
-                Thread.Sleep(500);           
+                Thread.Sleep(125);           
         }
         
         private void InputKeyBoard()
@@ -70,7 +70,7 @@ namespace SnakeConsole
 
         private void DrawSnake()
         {  
-            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.ForegroundColor = ConsoleColor.Green;
             Position positionAuxiliary = null;
 
             for (int index = 0; index < partsOfTheSnake.Count; index++)
@@ -89,7 +89,7 @@ namespace SnakeConsole
                     positionAuxiliary = new Position(positionAuxiliary2.X, positionAuxiliary2.Y);
                 }
                 Console.SetCursorPosition(partsOfTheSnake[index].X, partsOfTheSnake[index].Y);
-                Console.Write("♥");                
+                Console.Write("♦");                
             }              
         }
     }
