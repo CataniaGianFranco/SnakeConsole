@@ -34,9 +34,17 @@ namespace SnakeConsole
                     Console.SetCursorPosition(0,0);
                     Console.Write("  Name: Chicho - Food: {0}  ", score);
                 }
+
+                if (snake.Position.X == 0 || snake.Position.X == width || snake.Position.Y == 1 || snake.Position.Y == height)
+                {
+                    game = false;
+                }
                     
             }
-           
+           Console.Clear();
+           Console.ForegroundColor = ConsoleColor.White;
+           Console.WriteLine("GameOver");
+           Console.Write("Name: Chicho\nFood: {0}", score);
             
         }
     }
