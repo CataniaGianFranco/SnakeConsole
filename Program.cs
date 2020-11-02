@@ -6,7 +6,7 @@ namespace SnakeConsole
     {
         static void Main(string[] args)
         {
-            Console.Title = "Snake game";
+            Console.Title = "Heart game";
             Console.CursorVisible = false;
             SnakeGame game = new SnakeGame();
             game.Start();            

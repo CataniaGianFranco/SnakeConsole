@@ -18,8 +18,8 @@ namespace SnakeConsole
         private void Draw()
         {
             Console.SetCursorPosition(this.position.X, this.position.Y);
-            Console.ForegroundColor = ConsoleColor.DarkRed;
-            Console.Write("@");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write("■");
         }
     }
 }
