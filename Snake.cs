@@ -6,7 +6,6 @@ namespace SnakeConsole
 {
     public class Snake
     {
-        private bool alive = true;
         private List<Position> partsOfTheSnake = new List<Position>();
         private Direction direction = Direction.Right;
         private ConsoleKeyInfo keyPressed;
@@ -22,9 +21,9 @@ namespace SnakeConsole
         }        
         public void UpdateSnake()
         {                
-                InputKeyBoard();
-                DrawSnake();    
-                Thread.Sleep(135);           
+            InputKeyBoard();
+            DrawSnake();
+            Thread.Sleep(125);          
         }
         
         private void InputKeyBoard()
@@ -32,7 +31,6 @@ namespace SnakeConsole
             if (Console.KeyAvailable)
             {
                 keyPressed = Console.ReadKey(true);
-
                 switch (keyPressed.Key)
                 {
                     case ConsoleKey.W:
@@ -54,8 +52,8 @@ namespace SnakeConsole
                     case ConsoleKey.Escape:
                         Environment.Exit(0);
                         break;
-                }
-            }
+                }   
+            }   
         }
 
         private void SnakeDirection()
@@ -92,13 +90,8 @@ namespace SnakeConsole
                 }
                 Console.SetCursorPosition(partsOfTheSnake[index].X, partsOfTheSnake[index].Y);
                 Console.Write("♥");                
-            }              
+            }            
         }
-
-        public void AddBody(int x, int y)
-        {
-            position = new Position(x,y);
-            partsOfTheSnake.Add(position);
-        }
+        public void AddBody(int x, int y) { partsOfTheSnake.Add(new Position(x,y)); }
     }
 }
